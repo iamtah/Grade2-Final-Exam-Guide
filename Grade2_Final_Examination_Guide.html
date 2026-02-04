@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แนวทางสอบปลายภาค - ชั้นประถมศึกษาปีที่ 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Arial', 'Cordia New', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+        
+        .academic-year {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+        
+        main {
+            padding: 40px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+        }
+        
+        section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .exam-schedule {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .day-section {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .day-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        thead {
+            background: #667eea;
+            color: white;
+        }
+        
+        th {
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            border-right: 1px solid #667eea;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            border-right: 1px solid #f0f0f0;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tbody tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .time {
+            font-weight: 600;
+            color: #667eea;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .duration {
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .subject {
+            color: #333;
+        }
+        
+        .break {
+            background: #fef5e7;
+            font-weight: 500;
+            color: #d68910;
+        }
+        
+        .homeroom {
+            background: #e8f8f5;
+            color: #117a65;
+        }
+        
+        .note {
+            background: #fdeef4;
+            padding: 15px;
+            border-left: 4px solid #c2185b;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #c2185b;
+            margin-bottom: 8px;
+        }
+        
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .subject-card {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+        }
+        
+        .subject-card h3 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        
+        .subject-card p {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 8px;
+        }
+        
+        .exam-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+        
+        .exam-note-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        
+        .practical-table {
+            margin-top: 20px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.9em;
+        }
+        
+        .emphasis {
+            background: #fff9c4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        
+        .remarks {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+        
+        .remarks-title {
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 8px;
+        }
+        
+        .two-lang {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 3px;
+            font-style: italic;
+        }
+        
+        ul {
+            margin-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            section h2 {
+                font-size: 1.5em;
+            }
+            
+            table {
+                font-size: 0.85em;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+            
+            main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>แนวทางสอบปลายภาค ชั้นประถมศึกษาปีที่ 2</h1>
+            <div class="subtitle">Grade 2 Final Examination Pointers</div>
+            <div class="academic-year">ภาคเรียนที่ 2 / 2568 (2025) | Semester 2/2568</div>
+        </header>
+        
+        <main>
+            <!-- Examination Schedule -->
+            <section>
+                <h2>📅 ตารางสอบปลายภาค / Final Examination Schedule</h2>
+                
+                <div class="exam-schedule">
+                    <!-- Monday -->
+                    <div class="day-section">
+                        <div class="day-title">วันจันทร์ / Monday, 23 February 2026</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>เวลา / Time</th>
+                                    <th>ระยะเวลา / Duration (นาที)</th>
+                                    <th>วิชา / Subject</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="time">07:50 - 08:30</td>
+                                    <td class="duration">40</td>
+                                    <td class="homeroom">นักเรียนอยู่ห้องเรียน / Homeroom</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">08:30 - 09:30</td>
+                                    <td class="duration">60</td>
+                                    <td class="subject">การเขียนและไวยากรณ์ / Writing and Grammar<div class="two-lang">(ทักษะการเขียนและวิทยากรณ์อังกฤษ)</div></td>
+                                </tr>
+                                <tr>
+                                    <td class="time">09:30 - 09:45</td>
+                                    <td class="duration">15</td>
+                                    <td class="break">พักเช้า / Morning Break</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">09:45 - 10:45</td>
+                                    <td class="duration">60</td>
+                                    <td class="subject">คณิตศาสตร์ไทย / Thai Mathematics<div class="two-lang">(ทักษะความเข้าใจ - ภาคภาษาไทย)</div></td>
+                                </tr>
+                                <tr>
+                                    <td class="time">10:45 - 11:45</td>
+                                    <td class="duration">60</td>
+                                    <td class="break">พักกลางวัน / Lunch Break</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">11:45 - 12:45</td>
+                                    <td class="duration">60</td>
+                                    <td class="subject">คณิตศาสตร์อังกฤษ / English Mathematics<div class="two-lang">(ภาคภาษาอังกฤษ)</div></td>
+                                </tr>
+                                <tr>
+                                    <td class="time">12:45 - 13:45</td>
+                                    <td class="duration">60</td>
+                                    <td class="subject">ภาษาไทย / Thai Language</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">13:45 - 14:00</td>
+                                    <td class="duration">15</td>
+                                    <td class="break">พักบ่าย / Afternoon Break</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">14:00 - 15:00</td>
+                                    <td class="duration">60</td>
+                                    <td class="subject">ภาษาอังกฤษ (การอ่านและคำศัพท์) / ESL (Reading and Vocabulary)</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">15:00 - 15:30</td>
+                                    <td class="duration">30</td>
+                                    <td class="homeroom">นักเรียนอยู่ห้องเรียน / Homeroom</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Wednesday -->
+                    <div class="day-section">
+                        <div class="day-title">วันพุธ / Wednesday, 25 February 2026</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>เวลา / Time</th>
+                                    <th>ระยะเวลา / Duration (นาที)</th>
+                                    <th>วิชา / Subject</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="time">07:50 - 08:30</td>
+                                    <td class="duration">40</td>
+                                    <td class="homeroom">นักเรียนอยู่ห้องเรียน / Homeroom</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">08:30 - 09:30</td>
+                                    <td class="duration">60</td>
+                                    <td class="subject">ประวัติศาสตร์ไทย / Thai History</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">09:30 - 09:45</td>
+                                    <td class="duration">15</td>
+                                    <td class="break">พักเช้า / Morning Break</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">09:45 - 10:45</td>
+                                    <td class="duration">60</td>
+                                    <td class="subject">วิทยาศาสตร์อังกฤษ / English Science<div class="two-lang">(ภาคภาษาอังกฤษ)</div></td>
+                                </tr>
+                                <tr>
+                                    <td class="time">10:45 - 11:45</td>
+                                    <td class="duration">60</td>
+                                    <td class="break">พักกลางวัน / Lunch Break</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">11:45 - 12:45</td>
+                                    <td class="duration">60</td>
+                                    <td class="homeroom">นักเรียนอยู่ห้องเรียน / Homeroom</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">12:45 - 15:10</td>
+                                    <td class="duration">-</td>
+                                    <td class="break">กลับมาเรียนตามตารางเรียนปกติ / Usual class schedule will be resumed</td>
+                                </tr>
+                                <tr>
+                                    <td class="time">15:10 - 15:30</td>
+                                    <td class="duration">-</td>
+                                    <td class="homeroom">นักเรียนอยู่ห้องเรียน / Homeroom</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Practical Test and Pre-examinations -->
+            <section>
+                <h2>🧪 สอบการปฏิบัติและสอบก่อน / Practical Test and Pre-examinations</h2>
+                <table class="practical-table">
+                    <thead>
+                        <tr>
+                            <th>วันที่ / Date</th>
+                            <th>วิชา / Subject</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>10 กุมภาพันธ์ 2569 / 10 Feb 2026</strong></td>
+                            <td>คณิตศาสตร์ไทย (โจทย์ปัญหา) / Thai Math (Word Problem)<div class="two-lang">(ภาคภาษาไทย)</div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>9 กุมภาพันธ์ 2569 / 9 Feb 2026</strong></td>
+                            <td>ภาษาจีน / Mandarin</td>
+                        </tr>
+                        <tr>
+                            <td><strong>9-13 กุมภาพันธ์ 2569 / 9-13 Feb 2026</strong></td>
+                            <td>ภาษาอังกฤษ (การฟัง) / ESL (Listening)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>9-13 กุมภาพันธ์ 2569 / 9-13 Feb 2026</strong></td>
+                            <td>ภาษาอังกฤษ (การพูด) / ESL (Speaking)<div class="two-lang">(สนทนาภาษาอังกฤษ)</div></td>
+                        </tr>
+                        <tr>
+                            <td><strong>9-13 กุมภาพันธ์ 2569 / 9-13 Feb 2026</strong></td>
+                            <td>คณิตศาสตร์อังกฤษ (โจทย์ปัญหา) / English Math (Word Problem)<div class="two-lang">(ภาคภาษาอังกฤษ)</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Important Notes -->
+            <section>
+                <h2>⚠️ หมายเหตุสำคัญ / Important Examination Notes</h2>
+                
+                <div class="exam-note">
+                    <div class="exam-note-title">📝 วันที่สอบก่อน / Pre-Examination Dates:</div>
+                    <p>วันจันทร์ถึงวันศุกร์ 9-13 กุมภาพันธ์ 2569 ในชั่วโมงเรียนปกติ</p>
+                    <p style="margin-top: 5px; font-size: 0.9em;">Monday to Friday, 9-13 February 2026 during the regular class hours.</p>
+                </div>
+                
+                <div class="note">
+                    <div class="note-title">📝 ข้อมูลเกี่ยวกับวิชา / Subject Information:</div>
+                    <ul>
+                        <li><strong>คณิตศาสตร์ / Mathematics:</strong> เน้นคำศัพท์และโจทย์ปัญหาในชีวิตจริง เตรียมการคำนวณและความเข้าใจแนวคิด
+                        <div style="font-size: 0.85em; color: #666; margin-top: 3px;"><em>Focus on vocabulary and real-world word problems. Be prepared with computations and understanding of concepts.</em></div></li>
+                        
+                        <li style="margin-top: 10px;"><strong>ศิลปศาสตร์ / Language Arts:</strong> ทบทวนการอ่าน การเขียน ไวยากรณ์ และคำศัพท์ในภาษาไทยและอังกฤษ
+                        <div style="font-size: 0.85em; color: #666; margin-top: 3px;"><em>Review reading, writing, grammar, and vocabulary skills in both Thai and English.</em></div></li>
+                        
+                        <li style="margin-top: 10px;"><strong>สังคมศึกษา / Social Studies:</strong> รวมถึงวิทยาศาสตร์ระดับประถม Cambridge และเนื้อหาที่เกี่ยวข้อง
+                        <div style="font-size: 0.85em; color: #666; margin-top: 3px;"><em>Include Cambridge Primary Science Learning and related materials.</em></div></li>
+                        
+                        <li style="margin-top: 10px;"><strong>ทักษะภาษาอังกฤษ / ESL Skills:</strong> ฝึกฝนการฟัง การพูด การอ่าน และความเข้าใจคำศัพท์ เพิ่มพูนคำศัพท์ผ่านการใช้งาน
+                        <div style="font-size: 0.85em; color: #666; margin-top: 3px;"><em>Practice listening, speaking, reading, and vocabulary comprehension. Build vocabulary through active usage.</em></div></li>
+                    </ul>
+                </div>
+                
+                <div class="remarks">
+                    <div class="remarks-title">📍 หมายเหตุที่สำคัญ / Important Remarks:</div>
+                    <p><strong>นักเรียนเข้าโรงเรียนและออกจากโรงเรียนในเวลาปกติ: 07:50 - 15:30</strong></p>
+                    <p style="margin-top: 10px; color: #555; font-size: 0.95em;">Students attend school at their normal school hours: 07:50 - 15:30</p>
+                </div>
+            </section>
+            
+            <!-- Exam Format by Subject -->
+            <section>
+                <h2>📚 รูปแบบการสอบตามวิชา / Examination Format by Subject</h2>
+                
+                <div class="subjects-grid">
+                    <div class="subject-card">
+                        <h3>ภาษาไทย / Thai Language</h3>
+                        <p><strong>ระยะเวลา / Duration:</strong> 60 นาที</p>
+                        <p><strong>รูปแบบ / Format:</strong> ความเข้าใจจากการอ่าน แบบฝึกเขียน และไวยากรณ์</p>
+                        <p><strong>เนื้อหา / Topics:</strong> คำศัพท์ โครงสร้างประโยค และทักษะการสื่อสาร</p>
+                    </div>
+                    
+                    <div class="subject-card">
+                        <h3>คณิตศาสตร์ไทย / Math (Thai)</h3>
+                        <p><strong>ระยะเวลา / Duration:</strong> 60 นาที</p>
+                        <p><strong>รูปแบบ / Format:</strong> โจทย์ปัญหา การคำนวณ และการประยุกต์ใช้งาน</p>
+                        <p><strong>เน้น / Focus:</strong> ทักษะแก้ปัญหาและการให้เหตุผลทางคณิตศาสตร์</p>
+                    </div>
+                    
+                    <div class="subject-card">
+                        <h3>คณิตศาสตร์อังกฤษ / Math (English)</h3>
+                        <p><strong>ระยะเวลา / Duration:</strong> 60 นาที</p>
+                        <p><strong>รูปแบบ / Format:</strong> โจทย์คณิตศาสตร์อังกฤษพร้อมการแก้ปัญหาโดยละเอียด</p>
+                        <p><strong>หมายเหตุ / Note:</strong> คำศัพท์และการแสดงความคิดทางคณิตศาสตร์ในภาษาอังกฤษ</p>
+                    </div>
+                    
+                    <div class="subject-card">
+                        <h3>การเขียน & ไวยากรณ์ / Writing & Grammar</h3>
+                        <p><strong>ระยะเวลา / Duration:</strong> 60 นาที</p>
+                        <p><strong>รูปแบบ / Format:</strong> แบบฝึกไวยากรณ์ การสร้างประโยค และการเขียน</p>
+                        <p><strong>ทักษะ / Skills:</strong> กาลการใช้คำนาม เครื่องหมายวรรคตอน และพื้นฐานการเขียนความ</p>
+                    </div>
+                    
+                    <div class="subject-card">
+                        <h3>ภาษาอังกฤษ (อ่าน) / ESL (Reading)</h3>
+                        <p><strong>ระยะเวลา / Duration:</strong> 60 นาที</p>
+                        <p><strong>รูปแบบ / Format:</strong> บทอ่านและคำถามเข้าใจความหมาย</p>
+                        <p><strong>เน้น / Focus:</strong> ความเข้าใจคำศัพท์และการใช้บริบท</p>
+                    </div>
+                    
+                    <div class="subject-card">
+                        <h3>ประวัติศาสตร์ / History</h3>
+                        <p><strong>ระยะเวลา / Duration:</strong> 60 นาที</p>
+                        <p><strong>รูปแบบ / Format:</strong> คำถามประวัติศาสตร์ไทยและการเขียนเรียงความ</p>
+                        <p><strong>เนื้อหา / Content:</strong> เหตุการณ์ทางประวัติศาสตร์และบุคคลสำคัญ</p>
+                    </div>
+                    
+                    <div class="subject-card">
+                        <h3>วิทยาศาสตร์อังกฤษ / Science (English)</h3>
+                        <p><strong>ระยะเวลา / Duration:</strong> 60 นาที</p>
+                        <p><strong>รูปแบบ / Format:</strong> หลักสูตร Cambridge Primary Science</p>
+                        <p><strong>เนื้อหา / Topics:</strong> วิทยาศาสตร์ชีววิทยา วิทยาศาสตร์กายภาพ และการทดลอง</p>
+                    </div>
+                    
+                    <div class="subject-card">
+                        <h3>ภาษาอังกฤษ (ฟัง & พูด) / ESL (Listening & Speaking)</h3>
+                        <p><strong>ระยะเวลา / Duration:</strong> สอบปฏิบัติ</p>
+                        <p><strong>ระยะเวลา / Period:</strong> 9-13 กุมภาพันธ์ 2569</p>
+                        <p><strong>รูปแบบ / Format:</strong> การประเมินการพูดและความเข้าใจการฟัง</p>
+                    </div>
+                    
+                    <div class="subject-card">
+                        <h3>ภาษาจีน / Mandarin</h3>
+                        <p><strong>ระยะเวลา / Duration:</strong> สอบก่อนวันที่ 9 กุมภาพันธ์ 2569</p>
+                        <p><strong>รูปแบบ / Format:</strong> การประเมินทักษะภาษา</p>
+                        <p><strong>หมายเหตุ / Note:</strong> ตรวจสอบเนื้อหาเฉพาะในห้องเรียนเพิ่มเติม</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Study Tips -->
+            <section>
+                <h2>💡 เคล็ดลับการเรียน / Study Tips for Success</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <div style="background: #f0f4ff; padding: 20px; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <h3 style="color: #667eea; margin-bottom: 10px;">📖 ทบทวนเนื้อหาอย่างรอบคอบ</h3>
+                        <p>เน้นเนื้อหาจากหนังสือเรียน เอกสารแนวทาง และบันทึกชั้นเรียน ให้ความสำคัญกับคำศัพท์และแนวคิดสำคัญในภาษาไทยและอังกฤษ</p>
+                        <p style="margin-top: 5px; font-size: 0.85em; color: #666;"><em>Focus on textbook content, worksheets, and class notes. Pay special attention to vocabulary and key concepts in both Thai and English.</em></p>
+                    </div>
+                    
+                    <div style="background: #f0fff4; padding: 20px; border-radius: 8px; border-left: 4px solid #10b981;">
+                        <h3 style="color: #10b981; margin-bottom: 10px;">⏱️ จัดการเวลาอย่างชาญฉลาด</h3>
+                        <p>คุ้นเคยกับการสอบและการบริหารเวลา ฝึกตอบคำถามในเวลาที่กำหนดเพื่อสร้างความมั่นใจและความเร็ว</p>
+                        <p style="margin-top: 5px; font-size: 0.85em; color: #666;"><em>Get familiar with exam timing. Practice answering questions within the allocated time to build confidence and speed.</em></p>
+                    </div>
+                    
+                    <div style="background: #fef3c7; padding: 20px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                        <h3 style="color: #f59e0b; margin-bottom: 10px;">✏️ ฝึกแบบฝึกหัด</h3>
+                        <p>ทำโจทย์ตัวอย่างและสอบเก่า คณิตศาสตร์ต้องการการฝึกซ้ำที่หลากหลายสำหรับโจทย์ปัญหาและการคำนวณ</p>
+                        <p style="margin-top: 5px; font-size: 0.85em; color: #666;"><em>Complete sample questions and past exam papers. Mathematics requires extensive practice of word problems and computations.</em></p>
+                    </div>
+                    
+                    <div style="background: #fce7f3; padding: 20px; border-radius: 8px; border-left: 4px solid #ec4899;">
+                        <h3 style="color: #ec4899; margin-bottom: 10px;">🎯 เน้นทักษะภาษา</h3>
+                        <p>สำหรับสอบภาษา ฝึกด้านการอ่าน การเขียน การฟัง และการพูด เพิ่มพูนคำศัพท์ผ่านการใช้งานอย่างจริงจัง</p>
+                        <p style="margin-top: 5px; font-size: 0.85em; color: #666;"><em>For language exams, practice reading, writing, listening, and speaking. Build vocabulary through active usage.</em></p>
+                    </div>
+                    
+                    <div style="background: #f3e8ff; padding: 20px; border-radius: 8px; border-left: 4px solid #a855f7;">
+                        <h3 style="color: #a855f7; margin-bottom: 10px;">😴 นอนหลับเพียงพอ</h3>
+                        <p>นอนให้เพียงพอในคืนก่อนการสอบ สมองที่ได้พักผ่อนจะมีประสิทธิภาพดีกว่าในการสอบ</p>
+                        <p style="margin-top: 5px; font-size: 0.85em; color: #666;"><em>Ensure proper sleep the night before exams. A well-rested mind performs better during examinations.</em></p>
+                    </div>
+                    
+                    <div style="background: #e0f2fe; padding: 20px; border-radius: 8px; border-left: 4px solid #0284c7;">
+                        <h3 style="color: #0284c7; margin-bottom: 10px;">🤝 ขอความช่วยเหลือ</h3>
+                        <p>อย่าลังเลที่จะถามครูเพื่อชี้แจงหัวข้อที่ยาก จัดตั้งกลุ่มเรียนร่วมกับเพื่อนร่วมชั้น</p>
+                        <p style="margin-top: 5px; font-size: 0.85em; color: #666;"><em>Don't hesitate to ask teachers for clarification on difficult topics. Form study groups with classmates.</em></p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Final Reminder -->
+            <section>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; text-align: center;">
+                    <h2 style="color: white; border: none; margin-bottom: 15px;">✅ ขอให้โชคดี / Good Luck!</h2>
+                    <p style="font-size: 1.1em; margin-bottom: 10px;">ขอให้นักเรียนสอบได้ผลดีในการสอบปลายภาค!</p>
+                    <p style="margin-bottom: 10px;">We wish you the best of luck on your Final Examinations!</p>
+                    <p>เรียนหนักและตั้งใจ คุณทำได้ 🌟 / Study hard, stay focused, and do your best. You've got this! 🌟</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>แนวทางสอบปลายภาค ชั้นประถมศึกษาปีที่ 2 | ภาคเรียนที่ 2 / 2568 (2025)</p>
+            <p>Grade 2 Final Examination Pointers | Semester 2/2568 (2025)</p>
+            <p>สร้างเพื่อให้ง่ายต่อการอ้างอิงและเตรียมสอบ</p>
+            <p>Created for easy reference and study preparation</p>
+        </footer>
+    </div>
+</body>
+</html>
