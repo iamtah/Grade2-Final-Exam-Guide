@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตารางสอบปลายภาค ป.2 ภาคเรียนที่ 2/2568 - BBS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Bai+Jamjuree:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #2C3E50;
+            --light: #F8F9FA;
+            --purple: #A78BFA;
+            --green: #10B981;
+            --orange: #F97316;
+            --blue: #3B82F6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        h1 {
+            font-family: 'Bai Jamjuree', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .grade-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        main {
+            padding: 2.5rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .section-icon {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .section-title {
+            font-family: 'Bai Jamjuree', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .date-header {
+            background: linear-gradient(135deg, var(--purple), var(--blue));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .exam-card {
+            background: var(--light);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .exam-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .exam-card.mandarin { border-left-color: #EF4444; }
+        .exam-card.math { border-left-color: #3B82F6; }
+        .exam-card.social { border-left-color: #10B981; }
+        .exam-card.esl { border-left-color: #F59E0B; }
+        .exam-card.science { border-left-color: #8B5CF6; }
+        .exam-card.thai { border-left-color: #EC4899; }
+        .exam-card.history { border-left-color: #14B8A6; }
+
+        .exam-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-family: 'Bai Jamjuree', sans-serif;
+        }
+
+        .exam-subtitle {
+            color: #6B7280;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .exam-content {
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+
+        .exam-content strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .exam-content ul {
+            margin: 0.5rem 0 0.5rem 1.5rem;
+        }
+
+        .exam-content li {
+            margin: 0.3rem 0;
+            padding-left: 0.5rem;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .schedule-table thead {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .schedule-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .schedule-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #E5E7EB;
+            background: white;
+        }
+
+        .schedule-table tbody tr:hover {
+            background: var(--light);
+        }
+
+        .schedule-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .time-badge {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .subject-name {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .badge-score {
+            background: var(--green);
+            color: white;
+        }
+
+        .badge-duration {
+            background: var(--blue);
+            color: white;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .vocab-item {
+            background: white;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 2px solid var(--light);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .vocab-item:hover {
+            border-color: var(--secondary);
+            transform: scale(1.05);
+        }
+
+        .important-note {
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            border-left: 4px solid var(--orange);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .important-note strong {
+            color: var(--orange);
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            .schedule-table {
+                font-size: 0.9rem;
+            }
+
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .exam-card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="font-size: 1.2rem; font-weight: 400; margin-bottom: 0.5rem; opacity: 0.95;">
+                🏫 Bangkok Bilingual School (BBS)
+            </div>
+            <h1>📚 ตารางสอบปลายภาคเรียนที่ 2/2568</h1>
+            <p class="subtitle">Semester 2/2025 Final Examinations</p>
+            <span class="grade-badge">ชั้นประถมศึกษาปีที่ 2 / Grade 2</span>
+        </header>
+
+        <main>
+            <!-- Pre-examinations Section -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-icon">📝</div>
+                    <h2 class="section-title">ส่วนที่ 1: การสอบนอกตารางและภาคปฏิบัติ</h2>
+                </div>
+                <p style="color: #6B7280; margin-bottom: 2rem;">สอบในคาบเรียนปกติ ระหว่างวันที่ 9-13 กุมภาพันธ์ 2569</p>
+
+                <div class="date-header">📅 วันจันทร์ที่ 9 กุมภาพันธ์ 2569</div>
+                <div class="exam-card mandarin">
+                    <div class="exam-title">🇨🇳 Mandarin (ภาษาจีน)</div>
+                    <div class="exam-content">
+                        <p><strong>หนังสือ:</strong> Join! Chinese for KIDS 2</p>
+                        <p><strong>บทเรียน:</strong> บทที่ 7-8</p>
+                        <p><strong>เนื้อหา:</strong></p>
+                        <ul>
+                            <li>เรื่องครอบครัว (Family)</li>
+                            <li>คำศัพท์กริยา (Verbs): ชอบ (Xi huan), รัก (Ai)</li>
+                            <li>ประโยค "ฉันชอบ...", "ฉันรัก..."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="date-header">📅 วันอังคารที่ 10 กุมภาพันธ์ 2569</div>
+                <div class="exam-card math">
+                    <div class="exam-title">🔢 Thai Math (Word Problem) / คณิตศาสตร์ (โจทย์ปัญหา - ไทย)</div>
+                    <div class="exam-content">
+                        <p><strong>เนื้อหา:</strong> โจทย์ปัญหาการบวก ลบ คูณ หาร ระคน (2 ขั้นตอน)</p>
+                    </div>
+                </div>
+
+                <div class="date-header">📅 วันพุธที่ 11 หรือ พฤหัสบดีที่ 12 กุมภาพันธ์ 2569</div>
+                <p style="color: #6B7280; margin-bottom: 1rem; padding-left: 1rem;">
+                    ขึ้นอยู่กับห้องเรียน: G.2/2, 2/3, 2/4 สอบวันที่ 11 | G.2/1, 2/5 สอบวันที่ 12
+                </p>
+                <div class="exam-card social">
+                    <div class="exam-title">🌍 Social Studies (สังคมศึกษา/สุขศึกษา) <span class="badge badge-score">20 คะแนน</span></div>
+                    <div class="exam-content">
+                        <p><strong>หน่วยการเรียนรู้ที่ 4:</strong> ความปลอดภัยในชีวิต</p>
+                        <ul>
+                            <li>บทที่ 4: สัญลักษณ์และป้ายเตือน</li>
+                            <li>บทที่ 5: อัคคีภัย (Fire accidents)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="date-header">📅 ระหว่างวันที่ 9-13 กุมภาพันธ์ 2569 (ทยอยสอบในคาบ)</div>
+                <div class="exam-card esl">
+                    <div class="exam-title">🗣️ ESL (Listening & Speaking)</div>
+                    <div class="exam-content">
+                        <p><strong>Listening <span class="badge badge-score">10 คะแนน</span></strong></p>
+                        <ul>
+                            <li>ฟังและเขียนคำศัพท์ที่หายไป</li>
+                            <li>ฟังและวงกลมคำที่ถูกต้อง</li>
+                        </ul>
+                        <p><strong>Speaking <span class="badge badge-score">10 คะแนน</span></strong></p>
+                        <p>ครูจะให้เลือกรูปภาพและตั้งคำถามเกี่ยวกับรูปนั้น เช่น:</p>
+                        <ul>
+                            <li>Is the robot's head narrow or wide? (หัวหุ่นยนต์แคบหรือกว้าง)</li>
+                            <li>Is the robot's leg long or short? (ขาหุ่นยนต์ยาวหรือสั้น)</li>
+                            <li>Is the robot tiny or huge? (หุ่นยนต์ตัวจิ๋วหรือตัวใหญ่)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exam-card math">
+                    <div class="exam-title">🔢 English Math (Word Problems) <span class="badge badge-score">10 คะแนน</span></div>
+                    <div class="exam-content">
+                        <p><strong>เนื้อหา:</strong> Solving Word Problems (การแก้โจทย์ปัญหาภาษาอังกฤษ)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Examinations Section -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-icon">📖</div>
+                    <h2 class="section-title">ส่วนที่ 2: การสอบปลายภาค (Final Examinations)</h2>
+                </div>
+                <p style="color: #6B7280; margin-bottom: 2rem;">สอบวันจันทร์ที่ 23 และ พุธที่ 25 กุมภาพันธ์ 2569</p>
+
+                <!-- Monday Schedule -->
+                <div class="date-header">📅 วันจันทร์ที่ 23 กุมภาพันธ์ 2569</div>
+                
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">เวลา</th>
+                            <th>วิชา / กิจกรรม</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="time-badge">07:50 - 08:30</span></td>
+                            <td><span class="subject-name">Homeroom</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">08:30 - 09:30</span></td>
+                            <td><span class="subject-name">Writing and Grammar</span> <span class="badge badge-duration">60 นาที</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">09:30 - 09:45</span></td>
+                            <td><span class="subject-name">Morning Break</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">09:45 - 10:45</span></td>
+                            <td><span class="subject-name">Thai Mathematics / คณิตศาสตร์ (ไทย)</span> <span class="badge badge-duration">60 นาที</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">10:45 - 11:45</span></td>
+                            <td><span class="subject-name">Lunch Break</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">11:45 - 12:45</span></td>
+                            <td><span class="subject-name">English Mathematics</span> <span class="badge badge-duration">60 นาที</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">12:45 - 13:45</span></td>
+                            <td><span class="subject-name">Thai Language / ภาษาไทย</span> <span class="badge badge-duration">60 นาที</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">13:45 - 14:00</span></td>
+                            <td><span class="subject-name">Afternoon Break</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">14:00 - 15:00</span></td>
+                            <td><span class="subject-name">ESL (Reading and Vocabulary)</span> <span class="badge badge-duration">60 นาที</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">15:00 - 15:30</span></td>
+                            <td><span class="subject-name">Homeroom</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Monday Exam Details -->
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--dark); font-size: 1.4rem;">📝 รายละเอียดการสอบวันจันทร์</h3>
+
+                <div class="exam-card esl">
+                    <div class="exam-title">✍️ Writing and Grammar <span class="badge badge-duration">60 นาที</span></div>
+                    <div class="exam-content">
+                        <p><strong>หนังสือ:</strong> Writing and Grammar</p>
+                        <p><strong>เนื้อหา:</strong></p>
+                        <ul>
+                            <li><strong>Lesson 8:</strong> Alphabetical Texts: A Glossary (การเรียงลำดับตัวอักษรและคำศัพท์), Parts of Speech (ชนิดของคำ)</li>
+                            <li><strong>Lesson 9:</strong> Narrative Writing: Story Settings and Endings (การเขียนเล่าเรื่อง: ฉากและตอนจบ)</li>
+                            <li><strong>Grammar:</strong> Past tenses (อดีตกาล), Adjectives (คำคุณศัพท์), Writing an opening/ending (การเขียนเปิดเรื่อง/ปิดเรื่อง)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exam-card math">
+                    <div class="exam-title">🔢 Thai Mathematics / คณิตศาสตร์ (ไทย) <span class="badge badge-score">30 คะแนน</span> <span class="badge badge-duration">60 นาที</span></div>
+                    <div class="exam-content">
+                        <p><strong>เนื้อหา:</strong></p>
+                        <ul>
+                            <li>บทที่ 8: การวัดปริมาตร (Measurement of Volume)</li>
+                            <li>บทที่ 10: การบวก ลบ คูณ หารระคน (Mixed Operations)</li>
+                            <li>บทที่ 12: เงิน (Money)</li>
+                            <li><strong>โจทย์ปัญหา:</strong> โจทย์ปัญหาการบวก ลบ คูณ หารระคน (เน้นบทที่ 8-10)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exam-card math">
+                    <div class="exam-title">🔢 English Mathematics <span class="badge badge-duration">60 นาที</span></div>
+                    <div class="exam-content">
+                        <p><strong>เนื้อหา:</strong></p>
+                        <ul>
+                            <li><strong>Ch 7: Capacity and Volume:</strong> การเปรียบเทียบความจุและปริมาตร, การวัดและเปรียบเทียบในหน่วยลิตร (Litres)</li>
+                            <li><strong>Order of Operations (Additional):</strong> ประโยคสัญลักษณ์ที่มีเครื่องหมายผสม เช่น (2 × 3) + (20 - 8)</li>
+                            <li><strong>Money (Additional):</strong> รู้จักเหรียญและธนบัตรไทย, การอ่านและเขียนจำนวนเงิน, การบวกและลบค่าเงิน</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exam-card thai">
+                    <div class="exam-title">📖 Thai Language / ภาษาไทย <span class="badge badge-duration">60 นาที</span></div>
+                    <div class="exam-content">
+                        <p><strong>หลักภาษาและการใช้ภาษาไทย:</strong></p>
+                        <ul>
+                            <li>บทที่ 10: คำที่มีตัวสะกดไม่ตรงมาตรา, แม่กน, และคำที่มีตัวการันต์</li>
+                            <li>บทที่ 11: คำที่มี รร (ร หัน), คำที่มี รร และมีตัวสะกด</li>
+                        </ul>
+                        <p><strong>วรรณคดีและวรรณกรรม:</strong> อ่านจับใจความสำคัญ / คิดวิเคราะห์</p>
+                        <ul>
+                            <li>"ฉันเป็นไม้" (หน้า 170-171)</li>
+                            <li>"ลูกกบ" (หน้า 184)</li>
+                            <li>"ยายกะตา" (หน้า 186-191)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exam-card esl">
+                    <div class="exam-title">🗣️ ESL (Reading and Vocabulary) <span class="badge badge-score">20 คะแนน</span> <span class="badge badge-duration">60 นาที</span></div>
+                    <div class="exam-content">
+                        <p><strong>Vocabulary (ศัพท์ต้องแม่น):</strong></p>
+                        
+                        <p style="margin-top: 1rem;"><strong>Body (ร่างกาย):</strong></p>
+                        <div class="vocab-grid">
+                            <div class="vocab-item">lungs (ปอด)</div>
+                            <div class="vocab-item">heart (หัวใจ)</div>
+                            <div class="vocab-item">blood vessels (หลอดเลือด)</div>
+                            <div class="vocab-item">wrist (ข้อมือ)</div>
+                            <div class="vocab-item">fist (กำปั้น)</div>
+                            <div class="vocab-item">ribs (ซี่โครง)</div>
+                            <div class="vocab-item">rib cage</div>
+                            <div class="vocab-item">skeleton (โครงกระดูก)</div>
+                            <div class="vocab-item">spine (กระดูกสันหลัง)</div>
+                            <div class="vocab-item">muscle (กล้ามเนื้อ)</div>
+                            <div class="vocab-item">skull (กะโหลก)</div>
+                            <div class="vocab-item">bones (กระดูก)</div>
+                            <div class="vocab-item">pulse (ชีพจร)</div>
+                            <div class="vocab-item">brain (สมอง)</div>
+                            <div class="vocab-item">healthy (สุขภาพดี)</div>
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>Senses (ประสาทสัมผัส):</strong></p>
+                        <div class="vocab-grid">
+                            <div class="vocab-item">taste (รสชาติ)</div>
+                            <div class="vocab-item">smell (ดม)</div>
+                            <div class="vocab-item">salty (เค็ม)</div>
+                            <div class="vocab-item">sweet (หวาน)</div>
+                            <div class="vocab-item">sour (เปรี้ยว)</div>
+                            <div class="vocab-item">bitter (ขม)</div>
+                            <div class="vocab-item">umami (กลมกล่อม)</div>
+                            <div class="vocab-item">savory (อร่อย)</div>
+                            <div class="vocab-item">taste buds (ต่อมรับรส)</div>
+                            <div class="vocab-item">odor (กลิ่น)</div>
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>Adjectives (คำคุณศัพท์):</strong></p>
+                        <div class="vocab-grid">
+                            <div class="vocab-item">huge (ใหญ่มาก)</div>
+                            <div class="vocab-item">heavy (หนัก)</div>
+                            <div class="vocab-item">heaviest (หนักที่สุด)</div>
+                            <div class="vocab-item">light (เบา)</div>
+                            <div class="vocab-item">lightest (เบาที่สุด)</div>
+                        </div>
+
+                        <p style="margin-top: 1.5rem;"><strong>Grammar (ไวยากรณ์):</strong></p>
+                        <ul>
+                            <li><strong>Demonstrative pronouns:</strong> This, that, these, those</li>
+                            <li><strong>Comparatives and Superlatives:</strong> การเปรียบเทียบขั้นกว่า/สูงสุด</li>
+                            <li><strong>Future intentions:</strong> การใช้ Will เพื่อบอกความตั้งใจในอนาคต</li>
+                            <li><strong>Prepositions of time:</strong> before, after</li>
+                            <li><strong>Quantifiers:</strong> some / any / a lot of / a few</li>
+                            <li><strong>Countable / Uncountable nouns:</strong> much / many</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Wednesday Schedule -->
+                <div class="date-header" style="margin-top: 3rem;">📅 วันพุธที่ 25 กุมภาพันธ์ 2569</div>
+                
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">เวลา</th>
+                            <th>วิชา / กิจกรรม</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="time-badge">07:50 - 08:30</span></td>
+                            <td><span class="subject-name">Homeroom</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">08:30 - 09:30</span></td>
+                            <td><span class="subject-name">Thai History / ประวัติศาสตร์</span> <span class="badge badge-duration">60 นาที</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">09:30 - 09:45</span></td>
+                            <td><span class="subject-name">Morning Break</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">09:45 - 10:45</span></td>
+                            <td><span class="subject-name">English Science / วิทยาศาสตร์ (อังกฤษ)</span> <span class="badge badge-duration">60 นาที</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">10:45 - 11:45</span></td>
+                            <td><span class="subject-name">Lunch Break</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">11:45 - 12:45</span></td>
+                            <td><span class="subject-name">Homeroom</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">12:45 - 15:10</span></td>
+                            <td><span class="subject-name">เรียนตามตารางปกติ / Regular Class Schedule</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="time-badge">15:10 - 15:30</span></td>
+                            <td><span class="subject-name">Homeroom</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Wednesday Exam Details -->
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--dark); font-size: 1.4rem;">📝 รายละเอียดการสอบวันพุธ</h3>
+
+                <div class="exam-card history">
+                    <div class="exam-title">📜 Thai History / ประวัติศาสตร์ <span class="badge badge-score">30 คะแนน</span> <span class="badge badge-duration">60 นาที</span></div>
+                    <div class="exam-content">
+                        <p><strong>หนังสือ:</strong> ประวัติศาสตร์ (เล่มสีแดง/น้ำตาลตามปก)</p>
+                        <p><strong>หน่วยการเรียนรู้ที่ 3:</strong> ความเป็นมาของชาติไทยและภูมิปัญญาไทย</p>
+                        <ul>
+                            <li>บทที่ 1: บุคคลสำคัญในท้องถิ่น</li>
+                            <li>บทที่ 2: วัฒนธรรม ประเพณี และภูมิปัญญาไทย</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exam-card science">
+                    <div class="exam-title">🔬 English Science / วิทยาศาสตร์ (อังกฤษ) <span class="badge badge-score">30 คะแนน</span> <span class="badge badge-duration">60 นาที</span></div>
+                    <div class="exam-content">
+                        <p><strong>Unit 5: Forces and magnets (แรงและแม่เหล็ก)</strong></p>
+                        <ul>
+                            <li>5.1 Forces and forcemeters (แรงและเครื่องวัดแรง)</li>
+                            <li>5.2 Gravity (แรงโน้มถ่วง)</li>
+                            <li>5.3 Friction (แรงเสียดทาน)</li>
+                            <li>5.4 Amazing magnets (แม่เหล็กมหัศจรรย์)</li>
+                            <li>5.5 Magnetic materials (วัสดุแม่เหล็ก)</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Unit 6: The Earth and the Moon (โลกและดวงจันทร์)</strong></p>
+                        <ul>
+                            <li>6.1 Things we see in the sky (Star, Sun, Moon, Planets, Clouds)</li>
+                            <li>6.2 The Moon (ดวงจันทร์)</li>
+                            <li>6.3 The phases of the Moon (ข้างขึ้นข้างแรม)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Important Note -->
+            <div class="important-note">
+                <p><strong>📌 หมายเหตุสำคัญ:</strong></p>
+                <p style="margin-top: 0.5rem; font-size: 1.1rem;">
+                    วันสอบจริง (23 และ 25 กุมภาพันธ์) นักเรียนเข้าเรียน <strong>07:50 น.</strong> และเลิกเรียน <strong>15:30 น.</strong> ตามปกติ
+                </p>
+            </div>
+        </main>
+
+        <footer>
+            <p>📚 ขอให้น้องๆ ทบทวนบทเรียนให้ดี สอบได้คะแนนดีทุกคนนะคะ 💪</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">Bangkok Bilingual School (BBS) | Created with ❤️ for Grade 2 Students</p>
+        </footer>
+    </div>
+</body>
+</html>
